@@ -107,7 +107,7 @@ export default function AccountPage() {
                     </div>
 
                     {/* Danger zone */}
-                    <div className="card" style={{ padding: 22, borderColor: '#FCA5A5' }}>
+                    <div className="card" style={{ padding: 22, borderColor: 'var(--danger)' }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" strokeWidth="1.75">
                                 <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" /><line x1="12" y1="9" x2="12" y2="13" /><line x1="12" y1="17" x2="12.01" y2="17" />
@@ -131,40 +131,40 @@ export default function AccountPage() {
                         </button>
                     </div>
                 </div>
-            </div>
 
-            {/* Cancel Modal */}
-            {showCancel && (
-                <div className="modal-overlay" onClick={(e) => e.target === e.currentTarget && setShowCancel(false)}>
-                    <div className="modal" style={{ textAlign: 'center', maxWidth: 400 }}>
-                        <div style={{
-                            width: 52, height: 52, borderRadius: '50%',
-                            background: 'var(--danger-light)', margin: '0 auto 16px',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        }}>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" strokeWidth="1.75">
-                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" /><line x1="12" y1="9" x2="12" y2="13" /><line x1="12" y1="17" x2="12.01" y2="17" />
-                            </svg>
-                        </div>
-                        <h2 style={{ fontSize: 18, fontWeight: 600, marginBottom: 8 }}>Cancel Subscription?</h2>
-                        <p style={{ fontSize: 14, color: 'var(--text-secondary)', marginBottom: 24, lineHeight: 1.6 }}>
-                            You&apos;ll lose access to auto-categorization, dashboards, reports, and all premium features.
-                        </p>
-                        <div style={{ display: 'flex', gap: 10, justifyContent: 'center' }}>
-                            <button className="btn-ghost" onClick={() => setShowCancel(false)}>Keep Plan</button>
-                            <button
-                                style={{
-                                    padding: '10px 20px', background: 'var(--danger)', color: 'white',
-                                    border: 'none', borderRadius: 'var(--radius)', fontWeight: 600,
-                                    cursor: 'pointer', fontFamily: 'inherit',
-                                }}
-                            >
-                                Yes, Cancel
-                            </button>
+                {/* Cancel Modal */}
+                {showCancel && (
+                    <div className="modal-overlay" onClick={(e) => e.target === e.currentTarget && setShowCancel(false)}>
+                        <div className="modal" style={{ textAlign: 'center', maxWidth: 400 }}>
+                            <div style={{
+                                width: 52, height: 52, borderRadius: '50%',
+                                background: 'var(--danger-light)', margin: '0 auto 16px',
+                                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            }}>
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" strokeWidth="1.75">
+                                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" /><line x1="12" y1="9" x2="12" y2="13" /><line x1="12" y1="17" x2="12.01" y2="17" />
+                                </svg>
+                            </div>
+                            <h2 style={{ fontSize: 18, fontWeight: 600, marginBottom: 8 }}>Cancel Subscription?</h2>
+                            <p style={{ fontSize: 14, color: 'var(--text-secondary)', marginBottom: 24, lineHeight: 1.6 }}>
+                                You&apos;ll lose access to auto-categorization, dashboards, reports, and all premium features.
+                            </p>
+                            <div style={{ display: 'flex', gap: 10, justifyContent: 'center' }}>
+                                <button className="btn-ghost" onClick={() => setShowCancel(false)}>Keep Plan</button>
+                                <button
+                                    style={{
+                                        padding: '10px 20px', background: 'var(--danger)', color: 'white',
+                                        border: 'none', borderRadius: 'var(--radius)', fontWeight: 600,
+                                        cursor: 'pointer', fontFamily: 'inherit',
+                                    }}
+                                >
+                                    Yes, Cancel
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            )}
+                )}
+            </div>
         </div>
     )
 }

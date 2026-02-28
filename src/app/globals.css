@@ -25,6 +25,13 @@
   --info: #3B82F6;
   --info-light: #EFF6FF;
 
+  --success-text: #065F46;
+  --danger-text: #991B1B;
+  --warning-text: #92400E;
+  --info-text: #1E40AF;
+  --badge-gray-bg: #F1F5F9;
+  --badge-gray-text: #64748B;
+
   --border: #E2E8F0;
   --border-subtle: #F1F5F9;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
@@ -42,6 +49,33 @@
   /* Transitions */
   --transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
   --transition-slow: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme='dark'] {
+  --bg: #0B0F19;
+  --bg-elevated: #111827;
+  --card: #111827;
+  --text: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-tertiary: #64748B;
+
+  --border: #1F2937;
+  --border-subtle: #111827;
+  --row-hover: rgba(255, 255, 255, 0.03);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+
+  --primary-50: rgba(67, 97, 238, 0.15);
+  --primary-100: rgba(67, 97, 238, 0.25);
+  --primary-light: rgba(67, 97, 238, 0.15);
+
+  --success-text: #34D399;
+  --danger-text: #F87171;
+  --warning-text: #FBBF24;
+  --info-text: #60A5FA;
+  --badge-gray-bg: rgba(255, 255, 255, 0.05);
+  --badge-gray-text: #94A3B8;
 }
 
 /* Reset */
@@ -240,17 +274,17 @@ a {
 
 .badge-success {
   background: var(--success-light);
-  color: #065F46;
+  color: var(--success-text);
 }
 
 .badge-danger {
   background: var(--danger-light);
-  color: #991B1B;
+  color: var(--danger-text);
 }
 
 .badge-warning {
   background: var(--warning-light);
-  color: #92400E;
+  color: var(--warning-text);
 }
 
 .badge-primary {
@@ -259,13 +293,13 @@ a {
 }
 
 .badge-gray {
-  background: #F1F5F9;
-  color: var(--text-secondary);
+  background: var(--badge-gray-bg);
+  color: var(--badge-gray-text);
 }
 
 .badge-info {
   background: var(--info-light);
-  color: #1E40AF;
+  color: var(--info-text);
 }
 
 /* ─── Icon containers (replacing emojis) ─── */

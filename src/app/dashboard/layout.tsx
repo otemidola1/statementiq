@@ -8,6 +8,7 @@ import {
     IconHome, IconUpload, IconFileText,
     IconUsers, IconSettings, IconLogOut, IconBarChart
 } from '@/components/Icons'
+import { ThemeToggle } from '@/components/ThemeToggle'
 
 const navItems = [
     { href: '/dashboard', label: 'Dashboard', icon: IconHome },
@@ -188,28 +189,33 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                         </div>
                     </Link>
 
-                    <button
-                        onClick={handleSignOut}
-                        style={{
-                            width: '100%',
-                            padding: '8px 12px',
-                            background: 'transparent',
-                            border: '1px solid var(--border)',
-                            borderRadius: 'var(--radius-sm)',
-                            fontSize: 13,
-                            color: 'var(--text-secondary)',
-                            cursor: 'pointer',
-                            fontFamily: 'inherit',
-                            transition: 'all var(--transition)',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            gap: 6,
-                        }}
-                    >
-                        <IconLogOut size={14} />
-                        Sign out
-                    </button>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <div style={{ flexShrink: 0 }}>
+                            <ThemeToggle />
+                        </div>
+                        <button
+                            onClick={handleSignOut}
+                            style={{
+                                flex: 1,
+                                padding: '8px 12px',
+                                background: 'transparent',
+                                border: '1px solid var(--border)',
+                                borderRadius: 'var(--radius-sm)',
+                                fontSize: 13,
+                                color: 'var(--text-secondary)',
+                                cursor: 'pointer',
+                                fontFamily: 'inherit',
+                                transition: 'all var(--transition)',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: 6,
+                            }}
+                        >
+                            <IconLogOut size={14} />
+                            Sign out
+                        </button>
+                    </div>
                 </div>
             </aside>
 

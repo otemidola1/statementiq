@@ -364,18 +364,18 @@ export default function ResultsPage() {
                                         formatter={(value) => [`$${Number(value).toLocaleString('en-US', { minimumFractionDigits: 2 })}`, '']}
                                         contentStyle={{ borderRadius: 8, border: '1px solid #E2E8F0', fontSize: 13 }}
                                     />
-                                    <Bar dataKey="income" fill="#22C55E" radius={[4, 4, 0, 0]} name="Income" />
-                                    <Bar dataKey="expenses" fill="#EF4444" radius={[4, 4, 0, 0]} name="Expenses" />
+                                    <Bar dataKey="income" fill="var(--success)" radius={[4, 4, 0, 0]} name="Income" />
+                                    <Bar dataKey="expenses" fill="var(--danger)" radius={[4, 4, 0, 0]} name="Expenses" />
                                 </BarChart>
                             </ResponsiveContainer>
                         </div>
                     )}
                     <div style={{ display: 'flex', gap: 16, justifyContent: 'center', marginTop: 10 }}>
                         <span style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'var(--text-secondary)' }}>
-                            <div style={{ width: 10, height: 10, borderRadius: 2, background: '#22C55E' }} /> Income
+                            <div style={{ width: 10, height: 10, borderRadius: 2, background: 'var(--success)' }} /> Income
                         </span>
                         <span style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'var(--text-secondary)' }}>
-                            <div style={{ width: 10, height: 10, borderRadius: 2, background: '#EF4444' }} /> Expenses
+                            <div style={{ width: 10, height: 10, borderRadius: 2, background: 'var(--danger)' }} /> Expenses
                         </span>
                     </div>
                 </div>

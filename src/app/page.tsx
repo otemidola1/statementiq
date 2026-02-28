@@ -211,12 +211,12 @@ export default function HomePage() {
             {/* Mini stats row */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 10, marginBottom: 18 }}>
               <div style={{ background: 'var(--success-light)', borderRadius: 'var(--radius-sm)', padding: '10px 12px', textAlign: 'center' }}>
-                <div style={{ fontSize: 16, fontWeight: 700, color: '#065F46' }}>$4,250</div>
-                <div style={{ fontSize: 10, color: '#047857', fontWeight: 500 }}>Income</div>
+                <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--success-text)' }}>$4,250</div>
+                <div style={{ fontSize: 10, color: 'var(--success-text)', fontWeight: 500 }}>Income</div>
               </div>
               <div style={{ background: 'var(--danger-light)', borderRadius: 'var(--radius-sm)', padding: '10px 12px', textAlign: 'center' }}>
-                <div style={{ fontSize: 16, fontWeight: 700, color: '#991B1B' }}>$3,120</div>
-                <div style={{ fontSize: 10, color: '#B91C1C', fontWeight: 500 }}>Expenses</div>
+                <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--danger-text)' }}>$3,120</div>
+                <div style={{ fontSize: 10, color: 'var(--danger-text)', fontWeight: 500 }}>Expenses</div>
               </div>
               <div style={{ background: 'var(--primary-light)', borderRadius: 'var(--radius-sm)', padding: '10px 12px', textAlign: 'center' }}>
                 <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--primary)' }}>+$1,130</div>

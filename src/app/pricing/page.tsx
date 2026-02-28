@@ -188,7 +188,7 @@ export default function PricingPage() {
                             borderRadius: 100,
                             border: 'none',
                             background: !annual ? 'var(--primary)' : 'transparent',
-                            color: !annual ? 'white' : 'var(--text-secondary)',
+                            color: !annual ? 'var(--card)' : 'var(--text-secondary)',
                             fontWeight: 600,
                             fontSize: 14,
                             cursor: 'pointer',
@@ -205,7 +205,7 @@ export default function PricingPage() {
                             borderRadius: 100,
                             border: 'none',
                             background: annual ? 'var(--primary)' : 'transparent',
-                            color: annual ? 'white' : 'var(--text-secondary)',
+                            color: annual ? 'var(--card)' : 'var(--text-secondary)',
                             fontWeight: 600,
                             fontSize: 14,
                             cursor: 'pointer',
@@ -236,7 +236,7 @@ export default function PricingPage() {
                                 borderColor: plan.featured ? 'var(--primary)' : undefined,
                                 borderWidth: plan.featured ? 2 : undefined,
                                 background: plan.featured ? 'var(--primary)' : undefined,
-                                color: plan.featured ? 'white' : undefined,
+                                color: plan.featured ? 'var(--card)' : undefined,
                                 position: 'relative',
                                 transform: plan.featured ? 'scale(1.04)' : undefined,
                                 transition: 'transform var(--transition), box-shadow var(--transition)',
@@ -287,7 +287,7 @@ export default function PricingPage() {
                             </div>
 
                             <Link
-                                href="/signup"
+                                href={plan.name === 'Accountant' ? '/accountants-portal' : '/signup'}
                                 className={plan.featured ? '' : plan.btnStyle}
                                 style={{
                                     display: 'flex',
@@ -301,9 +301,9 @@ export default function PricingPage() {
                                     marginBottom: 20,
                                     transition: 'all var(--transition)',
                                     ...(plan.featured
-                                        ? { background: 'white', color: 'var(--primary)' }
+                                        ? { background: 'var(--card)', color: 'var(--primary)' }
                                         : plan.name === 'Accountant'
-                                            ? { borderColor: '#F59E0B', color: '#92400E' }
+                                            ? { borderColor: 'var(--warning)', color: 'var(--warning-text)' }
                                             : {}),
                                 }}
                             >

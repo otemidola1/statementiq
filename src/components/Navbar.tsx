@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { ThemeToggle } from './ThemeToggle'
 
 export default function Navbar() {
     return (
@@ -6,7 +7,7 @@ export default function Navbar() {
             position: 'sticky',
             top: 0,
             zIndex: 100,
-            background: 'rgba(250, 251, 254, 0.92)',
+            background: 'var(--bg)',
             backdropFilter: 'blur(16px)',
             borderBottom: '1px solid var(--border)',
             padding: '0 40px',
@@ -55,10 +56,11 @@ export default function Navbar() {
             }}>
                 <Link href="/#features" style={{ transition: 'color var(--transition)' }}>Features</Link>
                 <Link href="/pricing" style={{ transition: 'color var(--transition)' }}>Pricing</Link>
-                <Link href="/#accountants" style={{ transition: 'color var(--transition)' }}>For Accountants</Link>
+                <Link href="/accountants-portal" style={{ transition: 'color var(--transition)' }}>For Accountants</Link>
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <ThemeToggle />
                 <Link href="/login" className="btn-ghost" style={{ padding: '7px 16px' }}>
                     Log In
                 </Link>

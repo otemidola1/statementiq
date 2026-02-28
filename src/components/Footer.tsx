@@ -52,7 +52,7 @@ export default function Footer() {
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 10, fontSize: 14 }}>
                         <Link href="/#features" style={{ transition: 'color var(--transition)' }}>Features</Link>
                         <Link href="/pricing" style={{ transition: 'color var(--transition)' }}>Pricing</Link>
-                        <Link href="/#accountants" style={{ transition: 'color var(--transition)' }}>For Accountants</Link>
+                        <Link href="/accountants-portal" style={{ transition: 'color var(--transition)' }}>For Accountants</Link>
                         <Link href="/signup" style={{ transition: 'color var(--transition)' }}>Get Started</Link>
                     </div>
                 </div>
