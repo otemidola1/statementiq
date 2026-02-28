@@ -76,11 +76,7 @@ const trustItems = [
   { label: 'No Data Sold', icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><line x1="4.93" y1="4.93" x2="19.07" y2="19.07" /></svg> },
 ]
 
-const testimonials = [
-  { quote: 'StatementIQ cut my statement review time from 2 hours to 5 minutes. The income verification report alone is worth the subscription.', name: 'Michael Chen', title: 'Mortgage Broker, Pacific Lending' },
-  { quote: 'The client portal changed how I work with my clients. They upload, I get categorized data. No more back-and-forth email attachments.', name: 'Sarah Williams', title: 'CPA, Williams & Co Accounting' },
-  { quote: 'I was manually entering bank data into spreadsheets every month. Now I upload, review, and export to QuickBooks in under 10 minutes.', name: 'David Adeyemi', title: 'Small Business Owner, Lagos' },
-]
+
 
 export default function HomePage() {
   return (
@@ -354,71 +350,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section style={{
-        background: 'var(--bg-elevated)',
-        padding: '88px 40px',
-        borderTop: '1px solid var(--border-subtle)',
-      }}>
-        <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: 48 }}>
-            <h2 style={{ fontSize: 32, fontWeight: 700, letterSpacing: '-0.02em' }}>
-              Trusted by professionals
-            </h2>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
-            {testimonials.map((t) => (
-              <div key={t.name} style={{
-                background: 'var(--card)',
-                borderRadius: 'var(--radius)',
-                border: '1px solid var(--border)',
-                padding: 28,
-                display: 'flex',
-                flexDirection: 'column',
-              }}>
-                {/* Stars */}
-                <div style={{ display: 'flex', gap: 2, marginBottom: 16 }}>
-                  {[1, 2, 3, 4, 5].map((s) => (
-                    <svg key={s} width="14" height="14" viewBox="0 0 24 24" fill="#F59E0B" stroke="#F59E0B" strokeWidth="1">
-                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                    </svg>
-                  ))}
-                </div>
-                <p style={{
-                  fontSize: 14,
-                  color: 'var(--text-secondary)',
-                  lineHeight: 1.7,
-                  marginBottom: 20,
-                  flex: 1,
-                }}>
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <div style={{
-                    width: 36,
-                    height: 36,
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, var(--primary), #7C3AED)',
-                    color: 'white',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontWeight: 700,
-                    fontSize: 12,
-                    flexShrink: 0,
-                  }}>
-                    {t.name.split(' ').map(n => n[0]).join('')}
-                  </div>
-                  <div>
-                    <div style={{ fontSize: 13, fontWeight: 600 }}>{t.name}</div>
-                    <div style={{ fontSize: 12, color: 'var(--text-tertiary)' }}>{t.title}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA */}
       <section style={{
