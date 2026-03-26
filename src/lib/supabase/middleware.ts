@@ -6,9 +6,17 @@ export async function updateSession(request: NextRequest) {
         request,
     })
 
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+    // Fail open when env vars are unavailable so public routing stays reachable.
+    if (!supabaseUrl || !supabaseAnonKey) {
+        return supabaseResponse
+    }
+
     const supabase = createServerClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+        supabaseUrl,
+        supabaseAnonKey,
         {
             cookies: {
                 getAll() {
@@ -29,9 +37,17 @@ export async function updateSession(request: NextRequest) {
         }
     )
 
-    const {
-        data: { user },
-    } = await supabase.auth.getUser()
+    let user = null
+
+    try {
+        const {
+            data: { user: sessionUser },
+        } = await supabase.auth.getUser()
+        user = sessionUser
+    } catch {
+        // Keep request flowing if auth refresh fails at edge.
+        return supabaseResponse
+    }
 
     // Redirect unauthenticated users away from dashboard
     if (

@@ -65,13 +65,13 @@ export default async function SharedReportPage({
     const reportTypeLabel = report.report_type === 'income' ? 'Income Verification Report' : 'Loan Readiness Report'
 
     return (
-        <div style={{
+        <div className="shared-report-page" style={{
             minHeight: '100vh',
             background: '#F8FAFC',
             fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
         }}>
             {/* Top bar */}
-            <div style={{
+            <div className="shared-report-topbar" style={{
                 background: 'white',
                 borderBottom: '1px solid #E2E8F0',
                 padding: '14px 24px',
@@ -79,13 +79,14 @@ export default async function SharedReportPage({
                 justifyContent: 'space-between',
                 alignItems: 'center',
             }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                <div className="shared-report-meta" style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                     <span style={{ fontSize: 18, fontWeight: 700, color: '#4361EE' }}>StatementIQ</span>
                     <span style={{ fontSize: 13, color: '#94A3B8' }}>|</span>
                     <span style={{ fontSize: 14, color: '#64748B' }}>{reportTypeLabel}</span>
                 </div>
                 {signedUrl?.signedUrl && (
                     <a
+                        className="shared-report-download"
                         href={signedUrl.signedUrl}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -107,13 +108,14 @@ export default async function SharedReportPage({
             </div>
 
             {/* Report preview */}
-            <div style={{
+            <div className="shared-report-content" style={{
                 maxWidth: 900,
                 margin: '30px auto',
                 padding: '0 20px',
             }}>
                 {signedUrl?.signedUrl ? (
                     <iframe
+                        className="shared-report-frame"
                         src={signedUrl.signedUrl}
                         title={reportTypeLabel}
                         style={{

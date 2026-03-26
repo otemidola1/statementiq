@@ -57,7 +57,7 @@ export default function SignUpPage() {
     }
 
     return (
-        <div style={{
+        <div className="auth-page" style={{
             minHeight: '100vh',
             display: 'flex',
             alignItems: 'center',
@@ -65,7 +65,7 @@ export default function SignUpPage() {
             padding: 20,
             background: 'var(--bg)',
         }}>
-            <div style={{ width: '100%', maxWidth: 400, textAlign: 'center' }}>
+            <div className="auth-shell" style={{ width: '100%', maxWidth: 400, textAlign: 'center' }}>
                 {/* Logo */}
                 <Link href="/" style={{
                     display: 'inline-flex',
@@ -93,7 +93,7 @@ export default function SignUpPage() {
                 </Link>
 
                 {/* Card */}
-                <div className="card" style={{ padding: '32px 28px', textAlign: 'left' }}>
+                <div className="card auth-card" style={{ padding: '32px 28px', textAlign: 'left' }}>
                     <h1 style={{ fontSize: 22, fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 4 }}>Create your account</h1>
                     <p style={{ color: 'var(--text-secondary)', fontSize: 14, marginBottom: 24 }}>
                         Start converting bank statements in seconds
