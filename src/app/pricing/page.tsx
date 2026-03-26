@@ -129,12 +129,7 @@ export default function PricingPage() {
         <>
             <Navbar />
 
-            <section style={{
-                padding: '80px 40px',
-                maxWidth: 1200,
-                margin: '0 auto',
-                textAlign: 'center',
-            }}>
+            <section className="pricing-shell" style={{ textAlign: 'center' }}>
                 <div style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -154,7 +149,7 @@ export default function PricingPage() {
                 </div>
 
                 <h1 style={{
-                    fontSize: 42,
+                    fontSize: 'clamp(2rem, 5vw, 2.625rem)',
                     fontWeight: 800,
                     letterSpacing: '-0.03em',
                     marginBottom: 12,
@@ -166,16 +161,16 @@ export default function PricingPage() {
                         WebkitTextFillColor: 'transparent',
                     }}>pricing</span>
                 </h1>
-                <p style={{ color: 'var(--text-secondary)', fontSize: 17, marginBottom: 36 }}>
+                <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.95rem, 2.6vw, 1.0625rem)', marginBottom: 36 }}>
                     Start free. Upgrade when you need more power.
                 </p>
 
                 {/* Toggle */}
-                <div style={{
+                <div className="pricing-toggle" style={{
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: 4,
-                    marginBottom: 48,
+                    marginBottom: 'clamp(28px, 5vw, 48px)',
                     background: 'var(--card)',
                     padding: '4px',
                     borderRadius: 100,
@@ -221,16 +216,11 @@ export default function PricingPage() {
                 </div>
 
                 {/* Plan cards */}
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(4, 1fr)',
-                    gap: 16,
-                    textAlign: 'left',
-                }}>
+                <div className="pricing-plans-grid" style={{ display: 'grid', gap: 16, textAlign: 'left' }}>
                     {plans.map((plan) => (
                         <div
                             key={plan.name}
-                            className="card"
+                            className={`card pricing-plan-card${plan.featured ? ' pricing-plan-featured' : ''}`}
                             style={{
                                 padding: 24,
                                 borderColor: plan.featured ? 'var(--primary)' : undefined,
@@ -238,7 +228,7 @@ export default function PricingPage() {
                                 background: plan.featured ? 'var(--primary)' : undefined,
                                 color: plan.featured ? 'var(--card)' : undefined,
                                 position: 'relative',
-                                transform: plan.featured ? 'scale(1.04)' : undefined,
+                                transform: plan.featured ? 'scale(1.02)' : undefined,
                                 transition: 'transform var(--transition), box-shadow var(--transition)',
                             }}
                         >
@@ -319,7 +309,7 @@ export default function PricingPage() {
                                 marginBottom: 18,
                             }} />
 
-                            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 9 }}>
+                            <ul className="pricing-plan-features" style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 9 }}>
                                 {plan.features.map((f) => (
                                     <li key={f.name} style={{
                                         fontSize: 13,
@@ -345,11 +335,7 @@ export default function PricingPage() {
             </section>
 
             {/* FAQ */}
-            <section style={{
-                padding: '80px 40px',
-                maxWidth: 720,
-                margin: '0 auto',
-            }}>
+            <section className="pricing-faq-shell">
                 <h2 style={{ fontSize: 28, fontWeight: 700, textAlign: 'center', marginBottom: 36, letterSpacing: '-0.02em' }}>
                     Frequently asked questions
                 </h2>

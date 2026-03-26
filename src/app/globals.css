@@ -826,7 +826,38 @@ a {
   padding: clamp(56px, 8vw, 72px) clamp(16px, 4vw, 40px);
 }
 
+/* Pricing page auto-layout */
+.pricing-shell {
+  padding: clamp(48px, 8vw, 80px) clamp(16px, 4vw, 40px);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pricing-plans-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start;
+}
+
+.pricing-plan-card {
+  min-height: 100%;
+}
+
+.pricing-faq-shell {
+  padding: clamp(48px, 8vw, 80px) clamp(16px, 4vw, 40px);
+  max-width: 720px;
+  margin: 0 auto;
+}
+
 @media (max-width: 1024px) {
+  .pricing-plans-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+  }
+
+  .pricing-plan-featured {
+    transform: none !important;
+  }
+
   .landing-hero {
     grid-template-columns: 1fr;
     justify-items: center;
@@ -967,6 +998,36 @@ a {
     width: 100%;
     max-width: 320px;
     justify-content: center;
+  }
+
+  .pricing-toggle {
+    width: 100%;
+    max-width: 360px;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  .pricing-toggle button {
+    flex: 1 1 130px;
+    padding: 9px 14px !important;
+  }
+
+  .pricing-plans-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-plan-card {
+    padding: 20px !important;
+  }
+
+  .pricing-plan-features {
+    gap: 8px;
+  }
+
+  .pricing-faq-shell h2 {
+    font-size: 24px !important;
+    margin-bottom: 28px !important;
   }
 }
 
