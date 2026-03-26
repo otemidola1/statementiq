@@ -76,6 +76,40 @@ const trustItems = [
   { label: 'No Data Sold', icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10" /><line x1="4.93" y1="4.93" x2="19.07" y2="19.07" /></svg> },
 ]
 
+const howItWorksSteps = [
+  {
+    title: 'Upload Your Statement',
+    desc: 'Simply drag and drop your bank statement PDF or CSV file. We support all major banks and file formats.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+        <polyline points="7 10 12 15 17 10" />
+        <line x1="12" y1="15" x2="12" y2="3" />
+      </svg>
+    ),
+  },
+  {
+    title: 'AI Processes Data',
+    desc: 'Our AI engine analyzes, categorizes, and identifies patterns in seconds using advanced machine learning.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="9" />
+        <polyline points="12 7 12 12 15 15" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Get Actionable Insights',
+    desc: 'View beautiful visualizations, detailed reports, and export data in your preferred format.',
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="20 6 9 17 4 12" />
+        <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+      </svg>
+    ),
+  },
+]
+
 
 
 export default function HomePage() {
@@ -301,6 +335,50 @@ export default function HomePage() {
               <p style={{ fontSize: 14, color: 'var(--text-secondary)', lineHeight: 1.65 }}>
                 {feature.desc}
               </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="landing-how">
+        <div style={{ textAlign: 'center', marginBottom: 44 }}>
+          <div className="landing-how-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M13 2 3 14h9l-1 8 10-12h-9z" /></svg>
+            How It Works
+          </div>
+          <h2 style={{
+            fontSize: 'clamp(1.8rem, 4.8vw, 3rem)',
+            fontWeight: 800,
+            letterSpacing: '-0.03em',
+            marginBottom: 14,
+            color: 'var(--text)',
+          }}>
+            Get insights in three simple steps
+          </h2>
+          <p style={{ color: 'var(--text-secondary)', fontSize: 17, maxWidth: 640, margin: '0 auto', lineHeight: 1.65 }}>
+            Our streamlined process transforms your raw bank statements into actionable financial intelligence.
+          </p>
+        </div>
+
+        <div className="landing-how-line-wrap" aria-hidden>
+          <div className="landing-how-line" />
+          <div className="landing-how-line-points">
+            {howItWorksSteps.map((_, i) => (
+              <span key={`point-${i}`} className="landing-how-point">{i + 1}</span>
+            ))}
+          </div>
+        </div>
+
+        <div className="landing-how-grid">
+          {howItWorksSteps.map((step, i) => (
+            <div key={step.title} className="landing-how-card">
+              <div className="landing-how-mobile-index">{i + 1}</div>
+              <div className="landing-how-icon-wrap">
+                <span className="landing-how-icon">{step.icon}</span>
+              </div>
+              <h3>{step.title}</h3>
+              <p>{step.desc}</p>
             </div>
           ))}
         </div>
