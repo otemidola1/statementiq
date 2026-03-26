@@ -151,7 +151,7 @@ export default function HomePage() {
             padding: 28,
           }}>
             {/* Mini header */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
+            <div className="landing-hero-card-head" style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
               <div style={{
                 width: 36,
                 height: 36,
@@ -187,7 +187,7 @@ export default function HomePage() {
             </div>
 
             {/* Mini chart bars */}
-            <div style={{ display: 'flex', alignItems: 'flex-end', gap: 6, height: 48, marginBottom: 16 }}>
+            <div className="landing-hero-chart" style={{ display: 'flex', alignItems: 'flex-end', gap: 6, height: 48, marginBottom: 16 }}>
               {[65, 45, 80, 55, 70, 90, 40, 60, 75, 50, 85, 65].map((h, i) => (
                 <div key={i} style={{
                   flex: 1,
@@ -203,8 +203,8 @@ export default function HomePage() {
             {[
               { name: 'Netflix', cat: 'Subscription', amt: '-$15.99' },
               { name: 'Salary Deposit', cat: 'Income', amt: '+$3,200' },
-            ].map((tx) => (
-              <div key={tx.name} style={{
+            ].map((tx, i) => (
+              <div key={tx.name} className={`landing-hero-tx-row${i > 0 ? ' landing-hero-tx-row-optional' : ''}`} style={{
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
