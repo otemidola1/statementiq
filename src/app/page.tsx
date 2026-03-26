@@ -232,9 +232,10 @@ export default function HomePage() {
         borderTop: '1px solid var(--border-subtle)',
         borderBottom: '1px solid var(--border-subtle)',
       }}>
-        <div className="landing-trust-items">
-          {trustItems.map((item) => (
-            <span key={item.label} style={{
+        <div className="landing-trust-marquee">
+          <div className="landing-trust-track">
+            {[...trustItems, ...trustItems].map((item, idx) => (
+            <span key={`${item.label}-${idx}`} className="landing-trust-item" style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: 6,
@@ -246,6 +247,7 @@ export default function HomePage() {
               {item.label}
             </span>
           ))}
+          </div>
         </div>
       </section>
 
