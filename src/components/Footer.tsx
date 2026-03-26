@@ -5,13 +5,13 @@ export default function Footer() {
         <footer style={{
             background: '#0F172A',
             color: '#94A3B8',
-            padding: '56px 40px 28px',
+            padding: '56px clamp(16px, 4vw, 40px) 28px',
         }}>
             <div style={{
                 maxWidth: 1200,
                 margin: '0 auto',
                 display: 'grid',
-                gridTemplateColumns: '2fr 1fr 1fr 1fr',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))',
                 gap: 40,
             }}>
                 {/* Brand */}
@@ -86,6 +86,8 @@ export default function Footer() {
                 borderTop: '1px solid #1E293B',
                 display: 'flex',
                 justifyContent: 'space-between',
+                flexWrap: 'wrap',
+                rowGap: 12,
                 alignItems: 'center',
                 fontSize: 13,
             }}>

@@ -1,22 +1,37 @@
+ 'use client'
+
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 import { ThemeToggle } from './ThemeToggle'
 
 export default function Navbar() {
+    const [menuOpen, setMenuOpen] = useState(false)
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth > 900) {
+                setMenuOpen(false)
+            }
+        }
+
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
+
+    const closeMenu = () => setMenuOpen(false)
+
     return (
-        <nav style={{
+        <nav className={`landing-nav${menuOpen ? ' landing-nav-open' : ''}`} style={{
             position: 'sticky',
             top: 0,
             zIndex: 100,
             background: 'var(--bg)',
             backdropFilter: 'blur(16px)',
             borderBottom: '1px solid var(--border)',
-            padding: '0 40px',
-            height: 60,
-            display: 'flex',
+            minHeight: 60,
             alignItems: 'center',
-            justifyContent: 'space-between',
         }}>
-            <Link href="/" style={{
+            <Link href="/" onClick={closeMenu} className="landing-nav-brand" style={{
                 display: 'flex',
                 alignItems: 'center',
                 gap: 8,
@@ -46,25 +61,47 @@ export default function Navbar() {
                 </span>
             </Link>
 
-            <div style={{
+            <button
+                type="button"
+                className="landing-nav-toggle"
+                aria-label="Toggle navigation menu"
+                aria-expanded={menuOpen}
+                onClick={() => setMenuOpen((open) => !open)}
+            >
+                {menuOpen ? (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                ) : (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="3" y1="6" x2="21" y2="6" />
+                        <line x1="3" y1="12" x2="21" y2="12" />
+                        <line x1="3" y1="18" x2="21" y2="18" />
+                    </svg>
+                )}
+            </button>
+
+            <div className="landing-nav-links" style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: 28,
+                flexWrap: 'wrap',
+                gap: 16,
                 fontSize: 14,
                 fontWeight: 500,
                 color: 'var(--text-secondary)',
             }}>
-                <Link href="/#features" style={{ transition: 'color var(--transition)' }}>Features</Link>
-                <Link href="/pricing" style={{ transition: 'color var(--transition)' }}>Pricing</Link>
-                <Link href="/accountants-portal" style={{ transition: 'color var(--transition)' }}>For Accountants</Link>
+                <Link href="/#features" onClick={closeMenu} style={{ transition: 'color var(--transition)' }}>Features</Link>
+                <Link href="/pricing" onClick={closeMenu} style={{ transition: 'color var(--transition)' }}>Pricing</Link>
+                <Link href="/accountants-portal" onClick={closeMenu} style={{ transition: 'color var(--transition)' }}>For Accountants</Link>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <div className="landing-nav-actions" style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 10 }}>
                 <ThemeToggle />
-                <Link href="/login" className="btn-ghost" style={{ padding: '7px 16px' }}>
+                <Link href="/login" onClick={closeMenu} className="btn-ghost" style={{ padding: '7px 16px' }}>
                     Log In
                 </Link>
-                <Link href="/signup" className="btn-primary" style={{ padding: '7px 20px' }}>
+                <Link href="/signup" onClick={closeMenu} className="btn-primary" style={{ padding: '7px 20px' }}>
                     Start Free
                 </Link>
             </div>

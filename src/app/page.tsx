@@ -84,39 +84,12 @@ export default function HomePage() {
       <Navbar />
 
       {/* Hero */}
-      <section style={{
-        minHeight: 'calc(100vh - 64px)',
-        display: 'flex',
-        alignItems: 'center',
-        padding: '60px 40px',
-        maxWidth: 1200,
-        margin: '0 auto',
-        position: 'relative',
-        overflow: 'hidden',
-      }}>
+      <section className="landing-hero">
         {/* Background accent */}
-        <div style={{
-          position: 'absolute',
-          top: -120,
-          right: -180,
-          width: 600,
-          height: 600,
-          background: 'radial-gradient(circle, rgba(67, 97, 238, 0.06) 0%, transparent 70%)',
-          borderRadius: '50%',
-          pointerEvents: 'none',
-        }} />
-        <div style={{
-          position: 'absolute',
-          bottom: -200,
-          left: -100,
-          width: 400,
-          height: 400,
-          background: 'radial-gradient(circle, rgba(124, 58, 237, 0.04) 0%, transparent 70%)',
-          borderRadius: '50%',
-          pointerEvents: 'none',
-        }} />
+        <div className="landing-hero-accent landing-hero-accent-top" />
+        <div className="landing-hero-accent landing-hero-accent-bottom" />
 
-        <div style={{ flex: 1, maxWidth: 560, zIndex: 1 }}>
+        <div className="landing-hero-copy" style={{ zIndex: 1 }}>
           <div style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -133,7 +106,7 @@ export default function HomePage() {
             Now with AI-powered analysis
           </div>
           <h1 style={{
-            fontSize: 52,
+            fontSize: 'clamp(2rem, 5.5vw, 3.25rem)',
             fontWeight: 800,
             lineHeight: 1.08,
             letterSpacing: '-0.035em',
@@ -148,7 +121,7 @@ export default function HomePage() {
             }}>Fully Understood.</span>
           </h1>
           <p style={{
-            fontSize: 17,
+            fontSize: 'clamp(0.96rem, 2.4vw, 1.06rem)',
             color: 'var(--text-secondary)',
             lineHeight: 1.7,
             marginBottom: 32,
@@ -157,7 +130,7 @@ export default function HomePage() {
             Upload any PDF bank statement and get back categorized transactions,
             visual insights, and professional reports — instantly.
           </p>
-          <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+          <div className="landing-hero-actions">
             <Link href="/signup" className="btn-primary" style={{ padding: '13px 28px', fontSize: 15 }}>
               Start for Free
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>
@@ -169,20 +142,13 @@ export default function HomePage() {
         </div>
 
         {/* Hero visual card */}
-        <div style={{
-          flex: 1,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}>
-          <div style={{
-            width: 400,
+        <div className="landing-hero-visual">
+          <div className="landing-hero-card" style={{
             background: 'var(--card)',
             borderRadius: 'var(--radius-lg)',
             border: '1px solid var(--border)',
             boxShadow: 'var(--shadow-lg)',
             padding: 28,
-            transform: 'rotate(1deg)',
           }}>
             {/* Mini header */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
@@ -205,7 +171,7 @@ export default function HomePage() {
             </div>
 
             {/* Mini stats row */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 10, marginBottom: 18 }}>
+            <div className="landing-hero-stats" style={{ gap: 10, marginBottom: 18 }}>
               <div style={{ background: 'var(--success-light)', borderRadius: 'var(--radius-sm)', padding: '10px 12px', textAlign: 'center' }}>
                 <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--success-text)' }}>$4,250</div>
                 <div style={{ fontSize: 10, color: 'var(--success-text)', fontWeight: 500 }}>Income</div>
@@ -261,19 +227,12 @@ export default function HomePage() {
       </section>
 
       {/* Trust Bar */}
-      <section style={{
+      <section className="landing-trust-bar" style={{
         background: 'var(--bg-elevated)',
-        padding: '18px 40px',
         borderTop: '1px solid var(--border-subtle)',
         borderBottom: '1px solid var(--border-subtle)',
       }}>
-        <div style={{
-          maxWidth: 1200,
-          margin: '0 auto',
-          display: 'flex',
-          justifyContent: 'center',
-          gap: 40,
-        }}>
+        <div className="landing-trust-items">
           {trustItems.map((item) => (
             <span key={item.label} style={{
               display: 'inline-flex',
@@ -291,14 +250,10 @@ export default function HomePage() {
       </section>
 
       {/* Features */}
-      <section id="features" style={{
-        padding: '88px 40px',
-        maxWidth: 1200,
-        margin: '0 auto',
-      }}>
+      <section id="features" className="landing-features">
         <div style={{ textAlign: 'center', marginBottom: 52 }}>
           <h2 style={{
-            fontSize: 34,
+            fontSize: 'clamp(1.8rem, 4.5vw, 2.15rem)',
             fontWeight: 700,
             marginBottom: 12,
             letterSpacing: '-0.02em',
@@ -315,9 +270,8 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div style={{
+        <div className="landing-features-grid" style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
           gap: 16,
         }}>
           {features.map((feature) => (
@@ -352,9 +306,8 @@ export default function HomePage() {
 
 
       {/* CTA */}
-      <section style={{
+      <section className="landing-cta" style={{
         background: 'linear-gradient(135deg, var(--primary), #3730A3)',
-        padding: '72px 40px',
         textAlign: 'center',
         position: 'relative',
         overflow: 'hidden',
@@ -370,7 +323,7 @@ export default function HomePage() {
           pointerEvents: 'none',
         }} />
         <h2 style={{
-          fontSize: 32,
+          fontSize: 'clamp(1.7rem, 4.2vw, 2rem)',
           fontWeight: 700,
           color: 'white',
           marginBottom: 14,
@@ -387,7 +340,7 @@ export default function HomePage() {
         }}>
           No credit card required. Free plan available.
         </p>
-        <Link href="/signup" style={{
+        <Link href="/signup" className="landing-cta-button" style={{
           display: 'inline-flex',
           alignItems: 'center',
           gap: 8,
