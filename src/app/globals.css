@@ -992,7 +992,62 @@ iframe {
   margin: 0 auto;
 }
 
+/* Dashboard auto-layout */
+.dashboard-overlay {
+  position: fixed;
+  inset: 0;
+  border: 0;
+  background: rgba(2, 6, 23, 0.35);
+  z-index: 140;
+}
+
+.dashboard-mobile-topbar {
+  display: none;
+}
+
+.dashboard-mobile-menu-btn {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.dashboard-mobile-menu-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.dashboard-mobile-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.dashboard-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.dashboard-table-wrap .table {
+  min-width: 640px;
+}
+
 @media (max-width: 1024px) {
+  .dashboard-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .dashboard-main {
+    padding: 24px !important;
+  }
+
   .pricing-plans-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
@@ -1076,6 +1131,53 @@ iframe {
 }
 
 @media (max-width: 768px) {
+
+  .dashboard-sidebar {
+    transform: translateX(-100%);
+    transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .dashboard-sidebar.dashboard-sidebar-open {
+    transform: translateX(0);
+  }
+
+  .dashboard-main {
+    margin-left: 0 !important;
+    padding: 14px !important;
+  }
+
+  .dashboard-mobile-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--card);
+  }
+
+  .dashboard-stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .dashboard-usage-grid {
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 14px !important;
+  }
+
+  .dashboard-usage-divider {
+    width: 100% !important;
+    height: 1px !important;
+  }
+
+  .dashboard-recent-header {
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-start !important;
+  }
 
   html,
   body {

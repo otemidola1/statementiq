@@ -23,6 +23,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     const router = useRouter()
     const supabase = createClient()
     const [user, setUser] = useState<{ email?: string; name?: string; plan?: string } | null>(null)
+    const [mobileNavOpen, setMobileNavOpen] = useState(false)
 
     useEffect(() => {
         const getUser = async () => {
@@ -43,15 +44,27 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         getUser()
     }, [supabase])
 
+    useEffect(() => {
+        setMobileNavOpen(false)
+    }, [pathname])
+
     const handleSignOut = async () => {
         await supabase.auth.signOut()
         router.push('/login')
     }
 
     return (
-        <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--bg)' }}>
+        <div className="dashboard-layout" style={{ display: 'flex', minHeight: '100vh', background: 'var(--bg)' }}>
+            {mobileNavOpen && (
+                <button
+                    className="dashboard-overlay"
+                    aria-label="Close navigation menu"
+                    onClick={() => setMobileNavOpen(false)}
+                />
+            )}
+
             {/* Sidebar */}
-            <aside style={{
+            <aside className={`dashboard-sidebar ${mobileNavOpen ? 'dashboard-sidebar-open' : ''}`} style={{
                 width: 248,
                 background: 'var(--card)',
                 borderRight: '1px solid var(--border)',
@@ -220,12 +233,29 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             </aside>
 
             {/* Main content */}
-            <main style={{
+            <main className="dashboard-main" style={{
                 flex: 1,
                 marginLeft: 248,
                 padding: '28px 36px',
                 minHeight: '100vh',
             }}>
+                <div className="dashboard-mobile-topbar">
+                    <button
+                        type="button"
+                        className="dashboard-mobile-menu-btn"
+                        aria-label="Toggle navigation menu"
+                        aria-expanded={mobileNavOpen}
+                        onClick={() => setMobileNavOpen((prev) => !prev)}
+                    >
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                            <line x1="3" y1="6" x2="21" y2="6" />
+                            <line x1="3" y1="12" x2="21" y2="12" />
+                            <line x1="3" y1="18" x2="21" y2="18" />
+                        </svg>
+                    </button>
+                    <p className="dashboard-mobile-title">StatementIQ</p>
+                    <ThemeToggle />
+                </div>
                 {children}
             </main>
         </div>

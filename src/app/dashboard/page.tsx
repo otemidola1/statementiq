@@ -75,7 +75,7 @@ export default async function DashboardPage() {
             </div>
 
             {/* Stats grid */}
-            <div style={{
+            <div className="dashboard-stats-grid" style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(4, 1fr)',
                 gap: 14,
@@ -96,7 +96,7 @@ export default async function DashboardPage() {
 
             {/* Usage meters */}
             <div className="card" style={{ padding: '16px 20px', marginBottom: 20 }}>
-                <div style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
+                <div className="dashboard-usage-grid" style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
                     {/* Storage meter */}
                     <div style={{ flex: 1 }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
@@ -116,7 +116,7 @@ export default async function DashboardPage() {
                     </div>
 
                     {/* Divider */}
-                    <div style={{ width: 1, height: 32, background: 'var(--border)' }} />
+                    <div className="dashboard-usage-divider" style={{ width: 1, height: 32, background: 'var(--border)' }} />
 
                     {/* Pages meter */}
                     <div style={{ flex: 1 }}>
@@ -140,7 +140,7 @@ export default async function DashboardPage() {
 
             {/* Recent uploads */}
             <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
-                <div style={{
+                <div className="dashboard-recent-header" style={{
                     padding: '18px 22px',
                     borderBottom: '1px solid var(--border)',
                     display: 'flex',
@@ -166,38 +166,40 @@ export default async function DashboardPage() {
                         <a href="/dashboard/upload" className="btn-primary btn-sm">Upload Statement</a>
                     </div>
                 ) : (
-                    <table className="table">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Bank</th>
-                                <th>Pages</th>
-                                <th>Status</th>
-                                <th style={{ textAlign: 'right' }}>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {recentBatches.map((batch) => (
-                                <tr key={batch.id}>
-                                    <td>{new Date(batch.created_at).toLocaleDateString()}</td>
-                                    <td>{batch.bank_name_detected || '—'}</td>
-                                    <td>{batch.page_count || '—'}</td>
-                                    <td>
-                                        <span className={`badge badge-${batch.status === 'complete' ? 'success' : batch.status === 'failed' ? 'danger' : 'warning'}`}>
-                                            {batch.status}
-                                        </span>
-                                    </td>
-                                    <td style={{ textAlign: 'right' }}>
-                                        {batch.status === 'complete' && (
-                                            <a href={`/dashboard/results/${batch.id}`} className="btn-ghost btn-sm" style={{ textDecoration: 'none' }}>
-                                                View Results
-                                            </a>
-                                        )}
-                                    </td>
+                    <div className="dashboard-table-wrap">
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Bank</th>
+                                    <th>Pages</th>
+                                    <th>Status</th>
+                                    <th style={{ textAlign: 'right' }}>Actions</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {recentBatches.map((batch) => (
+                                    <tr key={batch.id}>
+                                        <td>{new Date(batch.created_at).toLocaleDateString()}</td>
+                                        <td>{batch.bank_name_detected || '—'}</td>
+                                        <td>{batch.page_count || '—'}</td>
+                                        <td>
+                                            <span className={`badge badge-${batch.status === 'complete' ? 'success' : batch.status === 'failed' ? 'danger' : 'warning'}`}>
+                                                {batch.status}
+                                            </span>
+                                        </td>
+                                        <td style={{ textAlign: 'right' }}>
+                                            {batch.status === 'complete' && (
+                                                <a href={`/dashboard/results/${batch.id}`} className="btn-ghost btn-sm" style={{ textDecoration: 'none' }}>
+                                                    View Results
+                                                </a>
+                                            )}
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 )}
             </div>
         </div>

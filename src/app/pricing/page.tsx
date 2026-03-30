@@ -52,7 +52,7 @@ const plans = [
     },
     {
         name: 'Starter',
-        price: { monthly: 19, annual: 15 },
+        price: { monthly: 2000, annual: 2000 },
         tagline: 'For individuals',
         btnStyle: 'btn-primary',
         btnText: 'Start Free Trial',
@@ -72,7 +72,7 @@ const plans = [
     },
     {
         name: 'Professional',
-        price: { monthly: 49, annual: 39 },
+        price: { monthly: 5000, annual: 5000 },
         tagline: 'For power users',
         btnStyle: 'btn-primary',
         btnText: 'Start Free Trial',
@@ -92,7 +92,7 @@ const plans = [
     },
     {
         name: 'Accountant',
-        price: { monthly: 99, annual: 79 },
+        price: { monthly: 10000, annual: 10000 },
         tagline: 'For firms',
         btnStyle: 'btn-ghost',
         btnText: 'Contact Sales',
@@ -266,14 +266,18 @@ export default function PricingPage() {
 
                             <div style={{ marginBottom: 20 }}>
                                 <span style={{ fontSize: 38, fontWeight: 800, letterSpacing: '-0.03em' }}>
-                                    ${annual ? plan.price.annual : plan.price.monthly}
+                                    {plan.name === 'Accountant'
+                                        ? 'Coming Soon'
+                                        : `₦${(annual ? plan.price.annual : plan.price.monthly).toLocaleString()}`}
                                 </span>
-                                <span style={{
-                                    fontSize: 14,
-                                    color: plan.featured ? 'rgba(255,255,255,0.7)' : 'var(--text-secondary)',
-                                }}>
-                                    /mo
-                                </span>
+                                {plan.name !== 'Accountant' && (
+                                    <span style={{
+                                        fontSize: 14,
+                                        color: plan.featured ? 'rgba(255,255,255,0.7)' : 'var(--text-secondary)',
+                                    }}>
+                                        /mo
+                                    </span>
+                                )}
                             </div>
 
                             <Link
